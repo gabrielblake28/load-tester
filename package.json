@@ -1,0 +1,23 @@
+{
+  "name": "load-tester",
+  "version": "1.0.0",
+  "description": "API load testing application monorepo",
+  "private": true,
+  "workspaces": [
+    "frontend"
+  ],
+  "scripts": {
+    "dev:frontend": "npm run dev --workspace=frontend",
+    "build:frontend": "npm run build --workspace=frontend",
+    "dev:backend": "cd backend && go run main.go",
+    "build:backend": "cd backend && go build -o bin/load-tester main.go",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "install:frontend": "npm install --workspace=frontend"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
